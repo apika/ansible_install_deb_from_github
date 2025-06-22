@@ -1,4 +1,4 @@
-install_deb_from_github
+Ansible Install .deb From Github
 =========
 
 Install the latest .deb from a github repository.
