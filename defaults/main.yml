@@ -1,0 +1,2 @@
+---
+json_query: assets[?content_type=='application/vnd.debian.binary-package'].browser_download_url

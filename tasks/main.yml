@@ -1,0 +1,14 @@
+---
+- name: install_deb_from_github | Query github api
+  ansible.builtin.uri:
+    url: "{{ github_api_releases_url }}"
+  register: api_response
+
+- name: install_deb_from_github | Get last .deb
+  ansible.builtin.set_fact:
+    deb_download_url: "{{ api_response.json | community.general.json_query(json_query) | first }}"
+
+- name: install_deb_from_github | Download .deb and install it
+  become: true
+  ansible.builtin.apt:
+    deb: deb_download_url
